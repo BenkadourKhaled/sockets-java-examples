@@ -11,23 +11,18 @@ public class SimpleClient {
     public static void main(String[] args) throws IOException {
 
         try {
-            // Se connecter au serveur sur localhost:8080
             Socket socket = new Socket("localhost", 8080);
-            System.out.println("Connecté au serveur");
+            System.out.println("Connect to the server");
 
-            // Obtenir les flux d'entrée/sortie
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
-            // Envoyer un message
-            out.println("Bonjour du client!");
-            System.out.println("Message envoyé au serveur");
+            out.println("Hello of Customer");
+            System.out.println("Message sender to server");
 
-            // Recevoir la réponse
             String response = in.readLine();
-            System.out.println("Réponse du serveur: " + response);
+            System.out.println("Server response: " + response);
 
-            // Fermer les ressources
             in.close();
             out.close();
             socket.close();

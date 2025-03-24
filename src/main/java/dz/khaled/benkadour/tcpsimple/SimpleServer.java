@@ -11,27 +11,21 @@ public class SimpleServer {
     public static void main(String[] args) {
 
         try {
-            // Créer un serveur sur le port 8080
             ServerSocket serverSocket = new ServerSocket(8080);
-            System.out.println("Serveur démarré sur le port 8080");
+            System.out.println("Server start in 8080 Port");
 
-            // Attendre la connexion d'un client
-            System.out.println("En attente de connexion client...");
+            System.out.println("Waiting for customer connection...");
             Socket clientSocket = serverSocket.accept();
-            System.out.println("Client connecté: " + clientSocket.getInetAddress());
+            System.out.println("Client connect : " + clientSocket.getInetAddress());
 
-            // Obtenir les flux d'entrée/sortie
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
-            // Lire un message du client
             String message = in.readLine();
-            System.out.println("Message reçu: " + message);
+            System.out.println("Message received: " + message);
 
-            // Envoyer une réponse
-            out.println("Message reçu par le serveur : " + message);
+            out.println("Message received By the server : " + message);
 
-            // Fermer les ressources
             in.close();
             out.close();
             clientSocket.close();
